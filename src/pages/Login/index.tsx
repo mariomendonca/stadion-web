@@ -39,7 +39,7 @@ export function Login() {
           <Button variant="ghost" onClick={() => setShowPassword(prevState => !prevState)}>{!showPassword ? <Eye /> : <EyeOff />}</Button>
         </div>
         <div>
-          <Link to='/password-recovery' className='text-sm text-slate-700 underline mt-1 inline'>Esqueci a senha</Link>
+          <Link to='/forgot-password' className='text-sm text-slate-700 underline mt-1 inline'>Esqueci a senha</Link>
         </div>
       </div>
 
