@@ -51,7 +51,7 @@ export function RegisterPresentation({
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm mx-auto space-y-4">
       <div className='flex justify-between items-center'>
-        <Link to='/login'>
+        <Link to='/auth/login'>
           <ArrowLeft />
         </Link>
         <h1 className='text-xl text-center font-semibold'>Crie sua conta</h1>

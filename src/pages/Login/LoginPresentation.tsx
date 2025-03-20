@@ -76,7 +76,7 @@ export function LoginPresentation({
         )}
         <div>
           <Link
-            to='/forgot-password'
+            to='/auth/forgot-password'
             className='text-sm text-slate-700 hover:text-slate-900 underline'
           >
             Esqueci a senha
@@ -94,7 +94,7 @@ export function LoginPresentation({
 
       <p className='text-center text-sm'>
         É novo por aqui?{' '}
-        <Link to='/register' className='text-slate-700 hover:text-slate-900 underline'>
+        <Link to='/auth/register' className='text-slate-700 hover:text-slate-900 underline'>
           Criar conta.
         </Link>
       </p>
