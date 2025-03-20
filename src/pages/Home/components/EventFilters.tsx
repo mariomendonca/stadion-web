@@ -110,7 +110,7 @@ export function EventFilters({ filters, onFilterChange, availableStates, default
       <div className="space-y-2">
         <Label>Categorias</Label>
         <div className="flex flex-wrap gap-2">
-          {['TENNIS', 'FOOTBALL', 'BASKETBALL', 'VOLLEYBALL'].map((category) => (
+          {['TENNIS', 'FOOTBALL', 'BASKETBALL', 'VOLLEYBALL', 'RUNNING'].map((category) => (
             <Button
               key={category}
               variant={filters.categories.includes(category as EventCategory) ? "default" : "outline"}
