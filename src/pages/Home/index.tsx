@@ -47,6 +47,7 @@ export function Home() {
       filters={filters}
       availableStates={STATE_ABBREVIATIONS}
       onFilterChange={handleFilterChange}
+      defaultFilters={DEFAULT_FILTERS}
     />
   )
 }

@@ -5,20 +5,40 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { EventCategory, EventFilters as EventFiltersType } from '../types'
 import { Calendar } from '@/components/ui/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { CalendarIcon, Search } from 'lucide-react'
+import { CalendarIcon, Search, X } from 'lucide-react'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { useCallback, useState, useEffect } from 'react'
 
 interface EventFiltersProps {
   filters: EventFiltersType
   onFilterChange: (filters: EventFiltersType) => void
   availableStates: string[]
+  defaultFilters: EventFiltersType
 }
 
-export function EventFilters({ filters, onFilterChange, availableStates }: EventFiltersProps) {
-  const handleNameChange = (value: string) => {
-    onFilterChange({ ...filters, name: value })
-  }
+export function EventFilters({ filters, onFilterChange, availableStates, defaultFilters }: EventFiltersProps) {
+  const [localName, setLocalName] = useState(filters.name)
+
+  // Update local name when filters.name changes externally
+  useEffect(() => {
+    setLocalName(filters.name)
+  }, [filters.name])
+
+  const handleNameChange = useCallback((value: string) => {
+    setLocalName(value)
+  }, [])
+
+  // Debounced effect to update filters
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (localName !== filters.name) {
+        onFilterChange({ ...filters, name: localName })
+      }
+    }, 500) // 500ms delay
+
+    return () => clearTimeout(timer)
+  }, [localName, filters, onFilterChange])
 
   const handleCategoryChange = (value: EventCategory) => {
     onFilterChange({
@@ -45,8 +65,34 @@ export function EventFilters({ filters, onFilterChange, availableStates }: Event
     })
   }
 
+  const handleClearFilters = () => {
+    onFilterChange(defaultFilters)
+  }
+
+  const hasActiveFilters = 
+    filters.name !== '' ||
+    filters.states.length > 0 ||
+    filters.categories.length > 0 ||
+    filters.startDate !== null ||
+    filters.endDate !== null
+
   return (
     <div className="space-y-4 p-4 border rounded-lg">
+      <div className="flex items-center justify-between">
+        <h3 className="font-semibold">Filtros</h3>
+        {hasActiveFilters && (
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={handleClearFilters}
+            className="text-slate-500 hover:text-slate-700"
+          >
+            <X className="h-4 w-4 mr-2" />
+            Limpar filtros
+          </Button>
+        )}
+      </div>
+
       <div className="space-y-2">
         <Label htmlFor="search">Buscar por nome</Label>
         <div className="relative">
@@ -54,7 +100,7 @@ export function EventFilters({ filters, onFilterChange, availableStates }: Event
           <Input
             id="search"
             placeholder="Digite o nome do evento"
-            value={filters.name}
+            value={localName}
             onChange={(e) => handleNameChange(e.target.value)}
             className="pl-9"
           />
@@ -105,12 +151,14 @@ export function EventFilters({ filters, onFilterChange, availableStates }: Event
                 variant="outline"
                 className="w-full justify-start text-left font-normal"
               >
-                <CalendarIcon className="mr-2 h-4 w-4" />
-                {filters.startDate ? (
-                  format(new Date(filters.startDate), 'PPP', { locale: ptBR })
-                ) : (
-                  <span>Selecione uma data</span>
-                )}
+                <CalendarIcon className="mr-2 h-4 w-4 shrink-0" />
+                <span className="truncate">
+                  {filters.startDate ? (
+                    format(new Date(filters.startDate), 'PPP', { locale: ptBR })
+                  ) : (
+                    <span>Selecione uma data</span>
+                  )}
+                </span>
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0">
@@ -132,12 +180,14 @@ export function EventFilters({ filters, onFilterChange, availableStates }: Event
                 variant="outline"
                 className="w-full justify-start text-left font-normal"
               >
-                <CalendarIcon className="mr-2 h-4 w-4" />
-                {filters.endDate ? (
-                  format(new Date(filters.endDate), 'PPP', { locale: ptBR })
-                ) : (
-                  <span>Selecione uma data</span>
-                )}
+                <CalendarIcon className="mr-2 h-4 w-4 shrink-0" />
+                <span className="truncate">
+                  {filters.endDate ? (
+                    format(new Date(filters.endDate), 'PPP', { locale: ptBR })
+                  ) : (
+                    <span>Selecione uma data</span>
+                  )}
+                </span>
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0">
