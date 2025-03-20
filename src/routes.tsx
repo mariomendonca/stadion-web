@@ -5,6 +5,7 @@ import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { ForgotPassword } from './pages/ForgotPassword'
 import { Home } from './pages/Home'
+import { ActivateAccount } from './pages/ActivateAccount'
 
 export function AppRoutes() {
   return (
@@ -15,6 +16,7 @@ export function AppRoutes() {
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
           <Route path='forgot-password' element={<ForgotPassword />} />
+          <Route path='activate/:id' element={<ActivateAccount />} />
         </Route>
 
         {/* App routes */}

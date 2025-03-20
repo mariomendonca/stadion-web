@@ -20,3 +20,13 @@ export const register = async (data: RegisterFormData) => {
     throw error;
   }
 }
+
+export const activateAccount = async (id: string) => {
+  try {
+    const response = await api.patch(`/v1/users/${id}/active`);
+    return response.data;
+  } catch (error) {
+    console.error('Error activating account:', error);
+    throw error;
+  }
+}
