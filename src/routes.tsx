@@ -6,6 +6,7 @@ import { Register } from './pages/Register'
 import { ForgotPassword } from './pages/ForgotPassword'
 import { Home } from './pages/Home'
 import { ActivateAccount } from './pages/ActivateAccount'
+import { EventDetails } from './pages/EventDetails'
 
 export function AppRoutes() {
   return (
@@ -22,6 +23,7 @@ export function AppRoutes() {
         {/* App routes */}
         <Route path="/" element={<AppLayout />}>
           <Route index element={<Home />} />
+          <Route path="event/:id" element={<EventDetails />} />
           {/* Add more authenticated routes here */}
         </Route>
       </Routes>

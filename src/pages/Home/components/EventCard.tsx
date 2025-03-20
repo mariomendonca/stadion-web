@@ -6,6 +6,7 @@ import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { Badge } from '@/components/ui/badge'
 import { DefaultEventImage } from '@/assets/default-event'
+import { Link } from 'react-router-dom'
 
 interface EventCardProps {
   event: Event
@@ -54,9 +55,9 @@ export function EventCard({ event }: EventCardProps) {
 
       <CardFooter>
         <Button asChild className="w-full">
-          <a href={event.redirectUrl} target="_blank" rel="noopener noreferrer">
-            Inscrever-se
-          </a>
+          <Link to={`/event/${event.id}`}>
+            Ver detalhes
+          </Link>
         </Button>
       </CardFooter>
     </Card>
