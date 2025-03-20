@@ -1,4 +1,4 @@
-export type EventCategory = 'RUNNING' | 'FOOTBALL' | 'BASKETBALL' | 'VOLLEYBALL' | 'OTHER'
+export type EventCategory = 'TENNIS' | 'FOOTBALL' | 'BASKETBALL' | 'VOLLEYBALL' | 'RUNNING'
 
 export interface Event {
   id: string
@@ -14,4 +14,14 @@ export interface Event {
   startDate: string
   endDate: string
   createdAt: string
-} 
+}
+
+export interface EventFilters {
+  states: string[]
+  categories: EventCategory[]
+  name: string
+  startDate: string | null
+  endDate: string | null
+  page: number
+  itemsPerPage: number
+}
