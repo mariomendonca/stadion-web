@@ -1,3 +1,4 @@
+import { RegisterFormData } from '@/pages/Register/schema'
 import { api } from './api'
 
 export const login = async (email: string, password: string) => {
@@ -9,3 +10,13 @@ export const login = async (email: string, password: string) => {
     throw error;
   }
 };
+
+export const register = async (data: RegisterFormData) => {
+  try {
+    const response = await api.post('/v1/users', data);
+    return response.data;
+  } catch (error) {
+    console.error('Error registering user:', error);
+    throw error;
+  }
+}
