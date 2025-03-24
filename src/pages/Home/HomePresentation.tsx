@@ -12,6 +12,8 @@ interface HomePresentationProps {
   availableStates: string[]
   onFilterChange: (filters: EventFilters) => void
   defaultFilters: EventFilters
+  hasMore: boolean
+  onLoadMore: () => void
 }
 
 const MemoizedEventFilters = memo(EventFiltersComponent)
@@ -23,6 +25,8 @@ export const HomePresentation = memo(function HomePresentation({
   availableStates,
   onFilterChange,
   defaultFilters,
+  hasMore,
+  onLoadMore
 }: HomePresentationProps) {
   const [showFilters, setShowFilters] = useState(false)
 
@@ -50,6 +54,18 @@ export const HomePresentation = memo(function HomePresentation({
         </div>
         <div className="lg:col-span-3">
           <EventList events={events} isLoading={isLoading} />
+          {hasMore && (
+            <div className="flex justify-center mt-8">
+              <Button
+                onClick={onLoadMore}
+                disabled={isLoading}
+                variant="outline"
+                className="min-w-[200px]"
+              >
+                {isLoading ? 'Carregando...' : 'Carregar mais'}
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>
