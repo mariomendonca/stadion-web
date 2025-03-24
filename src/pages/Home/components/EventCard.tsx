@@ -28,12 +28,12 @@ export function EventCard({ event }: EventCardProps) {
       </div>
 
       <CardHeader>
-        <div className="flex items-start justify-between">
+        <div className="space-y-2">
           <div>
             <CardTitle className="text-xl line-clamp-1">{event.name}</CardTitle>
             <CardDescription className="mt-2 line-clamp-2">{event.description}</CardDescription>
           </div>
-          <Badge variant="outline" className="shrink-0">{event.category}</Badge>
+          <Badge variant="outline" className="w-fit">{event.category}</Badge>
         </div>
       </CardHeader>
 
