@@ -3,17 +3,19 @@ import { login } from '@/services/userService'
 import { LoginPresentation } from './LoginPresentation'
 import { LoginFormData } from './schema'
 import { useNavigate } from 'react-router-dom'
+import { useUser } from '@/contexts/UserContext'
 
 export function Login() {
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
+  const { setUser } = useUser()
 
   async function handleSubmit(data: LoginFormData) {
     try {
       setIsLoading(true)
-      const result = await login(data.email, data.password)
-      console.log('result', result)
+      const user = await login(data.email, data.password)
+      setUser(user)
       navigate('/')
     } catch (error) {
       alert(error)
