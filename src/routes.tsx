@@ -7,6 +7,7 @@ import { ForgotPassword } from './pages/ForgotPassword'
 import { Home } from './pages/Home'
 import { ActivateAccount } from './pages/ActivateAccount'
 import { EventDetails } from './pages/EventDetails'
+import { NotFound } from '@/pages/NotFound'
 
 export function AppRoutes() {
   return (
@@ -26,6 +27,8 @@ export function AppRoutes() {
             <Route path="event/:id" element={<EventDetails />} />
             {/* Add more authenticated routes here */}
           </Route>
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
   )
