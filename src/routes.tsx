@@ -8,6 +8,7 @@ import { Home } from './pages/Home'
 import { ActivateAccount } from './pages/ActivateAccount'
 import { EventDetails } from './pages/EventDetails'
 import { NotFound } from '@/pages/NotFound'
+import { Profile } from './pages/Profile'
 
 export function AppRoutes() {
   return (
@@ -25,6 +26,7 @@ export function AppRoutes() {
           <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />} />
             <Route path="event/:id" element={<EventDetails />} />
+            <Route path="profile" element={<Profile />} />
             {/* Add more authenticated routes here */}
           </Route>
 

@@ -24,12 +24,17 @@ export function Login() {
     }
   }
 
+  function handleSkipLogin() {
+    navigate('/')
+  }
+
   return (
     <LoginPresentation
       showPassword={showPassword}
       isLoading={isLoading}
       onTogglePassword={() => setShowPassword(prev => !prev)}
       onSubmit={handleSubmit}
+      onSkipLogin={handleSkipLogin}
     />
   )
 }
