@@ -13,13 +13,15 @@ interface LoginPresentationProps {
   isLoading: boolean
   onTogglePassword: () => void
   onSubmit: (data: LoginFormData) => void
+  onSkipLogin: () => void
 }
 
 export function LoginPresentation({
   showPassword,
   isLoading,
   onTogglePassword,
-  onSubmit
+  onSubmit,
+  onSkipLogin
 }: LoginPresentationProps) {
   const {
     register,
@@ -92,12 +94,23 @@ export function LoginPresentation({
         {isLoading ? 'carregando...' : 'Login'}
       </Button>
 
-      <p className='text-center text-sm'>
-        É novo por aqui?{' '}
-        <Link to='/auth/register' className='text-slate-700 hover:text-slate-900 underline'>
-          Criar conta.
-        </Link>
-      </p>
+      <div className="space-y-2">
+        <p className='text-center text-sm'>
+          É novo por aqui?{' '}
+          <Link to='/auth/register' className='text-slate-700 hover:text-slate-900 underline'>
+            Criar conta.
+          </Link>
+        </p>
+        <p className='text-center text-sm'>
+          <button
+            type="button"
+            onClick={onSkipLogin}
+            className='text-slate-700 hover:text-slate-900 underline'
+          >
+            Fazer login mais tarde
+          </button>
+        </p>
+      </div>
     </form>
   )
 } 
