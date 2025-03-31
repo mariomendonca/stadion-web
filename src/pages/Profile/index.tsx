@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useUser } from '@/contexts/UserContext'
-import { ProfileView } from './ProfilePresentational'
+import { ProfilePresentational } from './ProfilePresentational'
 
 export function Profile() {
   const { user, setUser } = useUser()
@@ -42,7 +42,7 @@ export function Profile() {
   }
 
   return (
-    <ProfileView
+    <ProfilePresentational
       user={user}
       onEditProfile={handleEditProfile}
       onLogout={handleLogout}

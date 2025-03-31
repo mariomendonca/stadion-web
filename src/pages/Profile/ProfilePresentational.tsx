@@ -1,3 +1,6 @@
+import { Button } from '@/components/ui/button'
+import { User } from 'lucide-react'
+
 interface User {
   id: string
   name: string
@@ -9,7 +12,7 @@ interface User {
   isActive: boolean
 }
 
-interface ProfileViewProps {
+interface ProfilePresentationalProps {
   user: User | null
   onEditProfile: () => void
   onLogout: () => void
@@ -20,7 +23,7 @@ interface ProfileViewProps {
   onDeleteAccount: () => void
 }
 
-export function ProfileView({
+export function ProfilePresentational({
   user,
   onEditProfile,
   onLogout,
@@ -29,7 +32,7 @@ export function ProfileView({
   onChangePassword,
   onNotificationPreferences,
   onDeleteAccount,
-}: ProfileViewProps) {
+}: ProfilePresentationalProps) {
   return (
     <div className="max-w-4xl mx-auto py-8">
       {/* Profile Header */}
@@ -37,31 +40,40 @@ export function ProfileView({
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-6">
             <div className="relative">
-              <img
-                src={user?.imageUrl || '/default-avatar.png'}
-                alt="Profile"
-                className="w-24 h-24 rounded-full object-cover"
-              />
-              <button 
+              {user?.imageUrl ? (
+                <img
+                  src={user.imageUrl}
+                  alt="Profile"
+                  className="w-24 h-24 rounded-full object-cover"
+                />
+              ) : (
+                <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center">
+                  <User className="w-12 h-12 text-gray-400" />
+                </div>
+              )}
+              {/* <Button 
                 onClick={onEditProfile}
-                className="absolute bottom-0 right-0 bg-blue-600 text-white p-1 rounded-full hover:bg-blue-700"
+                variant="default"
+                size="icon"
+                className="absolute bottom-0 right-0 rounded-full"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>
-              </button>
+              </Button> */}
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">{user?.name}</h1>
               <p className="text-gray-600">@{user?.username}</p>
             </div>
           </div>
-          <button
+          <Button
             onClick={onLogout}
-            className="px-4 py-2 text-sm font-medium text-red-600 hover:text-red-700 hover:bg-red-50 rounded-md"
+            variant="destructive"
+            size="sm"
           >
             Logout
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -81,17 +93,19 @@ export function ProfileView({
                 <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
                 <p className="mt-1 text-gray-900">{new Date(user?.bornDate || '').toLocaleDateString()}</p>
               </div>
-              <button 
+              {/* <Button 
                 onClick={onEditProfile}
-                className="mt-4 text-blue-600 hover:text-blue-700 text-sm font-medium"
+                variant="outline"
+                size="sm"
+                className="mt-4"
               >
                 Edit Information
-              </button>
+              </Button> */}
             </div>
           </div>
 
-          {/* Activity Section */}
-          <div className="bg-white rounded-lg shadow-sm p-6">
+          {/* Activity Section - Not available in MVP */}
+          {/* <div className="bg-white rounded-lg shadow-sm p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Your Activity</h2>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -99,55 +113,63 @@ export function ProfileView({
                   <h3 className="text-sm font-medium text-gray-900">Events Created</h3>
                   <p className="text-sm text-gray-600">Manage your events</p>
                 </div>
-                <button 
+                <Button 
                   onClick={onViewCreatedEvents}
-                  className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+                  variant="ghost"
+                  size="sm"
                 >
                   View All
-                </button>
+                </Button>
               </div>
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-sm font-medium text-gray-900">Events Attending</h3>
                   <p className="text-sm text-gray-600">See your upcoming events</p>
                 </div>
-                <button 
+                <Button 
                   onClick={onViewAttendingEvents}
-                  className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+                  variant="ghost"
+                  size="sm"
                 >
                   View All
-                </button>
+                </Button>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Right Column - Settings */}
         <div className="space-y-6">
-          {/* Account Settings */}
-          <div className="bg-white rounded-lg shadow-sm p-6">
+          {/* Account Settings - Not available in MVP */}
+          {/* <div className="bg-white rounded-lg shadow-sm p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Account Settings</h2>
             <div className="space-y-4">
-              <button 
+              <Button 
                 onClick={onChangePassword}
-                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md"
+                variant="ghost"
+                size="sm"
+                className="w-full justify-start"
               >
                 Change Password
-              </button>
-              <button 
+              </Button>
+              <Button 
                 onClick={onNotificationPreferences}
-                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md"
+                variant="ghost"
+                size="sm"
+                className="w-full justify-start"
               >
                 Notification Preferences
-              </button>
-              <button 
+              </Button>
+              <Button 
                 onClick={onDeleteAccount}
-                className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-md"
+                variant="destructive"
+                size="sm"
+                className="w-full justify-start"
               >
                 Delete Account
-              </button>
+              </Button>
             </div>
-          </div>
+          </div> */}
 
           {/* Statistics */}
           <div className="bg-white rounded-lg shadow-sm p-6">
