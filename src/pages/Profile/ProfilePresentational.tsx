@@ -25,13 +25,7 @@ interface ProfilePresentationalProps {
 
 export function ProfilePresentational({
   user,
-  onEditProfile,
   onLogout,
-  onViewCreatedEvents,
-  onViewAttendingEvents,
-  onChangePassword,
-  onNotificationPreferences,
-  onDeleteAccount,
 }: ProfilePresentationalProps) {
   return (
     <div className="max-w-4xl mx-auto py-8">
