@@ -1,0 +1,62 @@
+{
+  "common": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "username": "Username",
+    "birthDate": "Birth Date",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot Password",
+    "createAccount": "Create Account",
+    "loading": "Loading...",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "profile": "Profile",
+    "settings": "Settings",
+    "language": "Language",
+    "english": "English",
+    "portuguese": "Portuguese",
+    "events": "Events"
+  },
+  "auth": {
+    "login": {
+      "title": "Login to your account",
+      "noAccount": "Don't have an account?",
+      "createAccount": "Create one",
+      "forgotPassword": "Forgot your password?",
+      "loginLater": "Login later"
+    },
+    "register": {
+      "title": "Create your account",
+      "haveAccount": "Already have an account?",
+      "login": "Login"
+    },
+    "forgotPassword": {
+      "title": "Reset your password",
+      "instructions": "Enter your email address and we'll send you instructions to reset your password.",
+      "backToLogin": "Back to login"
+    }
+  },
+  "profile": {
+    "personalInfo": "Personal Information",
+    "accountSettings": "Account Settings",
+    "changePassword": "Change Password",
+    "notificationPreferences": "Notification Preferences",
+    "deleteAccount": "Delete Account",
+    "statistics": "Statistics",
+    "memberSince": "Member Since",
+    "accountStatus": "Account Status",
+    "active": "Active",
+    "inactive": "Inactive"
+  }
+} 

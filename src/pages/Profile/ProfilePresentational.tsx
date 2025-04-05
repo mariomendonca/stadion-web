@@ -1,5 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { User } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 
 interface User {
   id: string
@@ -27,6 +29,8 @@ export function ProfilePresentational({
   user,
   onLogout,
 }: ProfilePresentationalProps) {
+  const { t } = useTranslation()
+
   return (
     <div className="max-w-4xl mx-auto py-8">
       {/* Profile Header */}
@@ -61,13 +65,16 @@ export function ProfilePresentational({
               <p className="text-gray-600">@{user?.username}</p>
             </div>
           </div>
-          <Button
-            onClick={onLogout}
-            variant="destructive"
-            size="sm"
-          >
-            Logout
-          </Button>
+          <div className="flex items-center space-x-4">
+            <LanguageSwitcher />
+            <Button
+              onClick={onLogout}
+              variant="destructive"
+              size="sm"
+            >
+              {t('common.logout')}
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -77,14 +84,14 @@ export function ProfilePresentational({
         <div className="md:col-span-2 space-y-6">
           {/* Personal Information */}
           <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Personal Information</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('profile.personalInfo')}</h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700">Email</label>
+                <label className="block text-sm font-medium text-gray-700">{t('common.email')}</label>
                 <p className="mt-1 text-gray-900">{user?.email}</p>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
+                <label className="block text-sm font-medium text-gray-700">{t('common.birthDate')}</label>
                 <p className="mt-1 text-gray-900">{new Date(user?.bornDate || '').toLocaleDateString()}</p>
               </div>
               {/* <Button 
@@ -167,18 +174,18 @@ export function ProfilePresentational({
 
           {/* Statistics */}
           <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Statistics</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('profile.statistics')}</h2>
             <div className="space-y-4">
               <div>
-                <p className="text-sm text-gray-600">Member Since</p>
+                <p className="text-sm text-gray-600">{t('profile.memberSince')}</p>
                 <p className="text-sm font-medium text-gray-900">
                   {new Date(user?.createdAt || '').toLocaleDateString()}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-gray-600">Account Status</p>
+                <p className="text-sm text-gray-600">{t('profile.accountStatus')}</p>
                 <p className="text-sm font-medium text-gray-900">
-                  {user?.isActive ? 'Active' : 'Inactive'}
+                  {user?.isActive ? t('profile.active') : t('profile.inactive')}
                 </p>
               </div>
             </div>

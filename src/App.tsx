@@ -1,10 +1,16 @@
+import { LanguageProvider } from '@/contexts/LanguageContext'
+import { UserProvider } from '@/contexts/UserContext'
 import { AppRoutes } from './routes'
-import { UserProvider } from './contexts/UserContext'
+import '@/i18n'
 
 export function App() {
   return (
-    <UserProvider>
-      <AppRoutes />
-    </UserProvider>
+    <LanguageProvider>
+      <UserProvider>
+        <AppRoutes />
+      </UserProvider>
+    </LanguageProvider>
   )
 }
+
+export default App

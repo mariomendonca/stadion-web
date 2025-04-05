@@ -1,0 +1,62 @@
+{
+  "common": {
+    "login": "Entrar",
+    "register": "Registrar",
+    "logout": "Sair",
+    "email": "Email",
+    "password": "Senha",
+    "name": "Nome",
+    "username": "Nome de usuário",
+    "birthDate": "Data de nascimento",
+    "confirmPassword": "Confirmar senha",
+    "forgotPassword": "Esqueci a senha",
+    "createAccount": "Criar conta",
+    "loading": "Carregando...",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "search": "Pesquisar",
+    "profile": "Perfil",
+    "settings": "Configurações",
+    "language": "Idioma",
+    "english": "Inglês",
+    "portuguese": "Português",
+    "events": "Eventos"
+  },
+  "auth": {
+    "login": {
+      "title": "Entre na sua conta",
+      "noAccount": "Não tem uma conta?",
+      "createAccount": "Crie uma",
+      "forgotPassword": "Esqueceu sua senha?",
+      "loginLater": "Entrar mais tarde"
+    },
+    "register": {
+      "title": "Crie sua conta",
+      "haveAccount": "Já tem uma conta?",
+      "login": "Entre"
+    },
+    "forgotPassword": {
+      "title": "Redefina sua senha",
+      "instructions": "Digite seu endereço de email e enviaremos instruções para redefinir sua senha.",
+      "backToLogin": "Voltar para o login"
+    }
+  },
+  "profile": {
+    "personalInfo": "Informações Pessoais",
+    "accountSettings": "Configurações da Conta",
+    "changePassword": "Alterar Senha",
+    "notificationPreferences": "Preferências de Notificação",
+    "deleteAccount": "Excluir Conta",
+    "statistics": "Estatísticas",
+    "memberSince": "Membro desde",
+    "accountStatus": "Status da Conta",
+    "active": "Ativo",
+    "inactive": "Inativo"
+  }
+} 

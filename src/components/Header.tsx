@@ -1,10 +1,12 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useUser } from '../contexts/UserContext'
 import LogoImg from '@/assets/logo-transparent.png'
+import { useTranslation } from 'react-i18next'
 
 export function Header() {
   const { isAuthenticated } = useUser()
   const location = useLocation()
+  const { t } = useTranslation()
 
   return (
     <header className="bg-white border-b border-gray-200">
@@ -26,7 +28,7 @@ export function Header() {
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              Events
+              {t('common.events')}
             </Link>
             
             {isAuthenticated ? (
@@ -38,7 +40,7 @@ export function Header() {
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                Profile
+                {t('common.profile')}
               </Link>
             ) : (
               <Link 
@@ -49,7 +51,7 @@ export function Header() {
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                Login ou criar conta
+                {t('common.login')}
               </Link>
             )}
           </nav>
