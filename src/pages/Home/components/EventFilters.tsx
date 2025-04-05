@@ -126,7 +126,7 @@ export function EventFilters({ filters, onFilterChange, availableStates, default
       <div className="space-y-2">
         <Label>Estados</Label>
         <Select
-          value={filters.states[0]}
+          value=""
           onValueChange={handleStateChange}
         >
           <SelectTrigger>
@@ -140,6 +140,24 @@ export function EventFilters({ filters, onFilterChange, availableStates, default
             ))}
           </SelectContent>
         </Select>
+        {filters.states.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-2">
+            {filters.states.map((state) => (
+              <div
+                key={state}
+                className="flex items-center gap-1 bg-slate-100 px-2 py-1 rounded-md text-sm"
+              >
+                <span>{state}</span>
+                <button
+                  onClick={() => handleStateChange(state)}
+                  className="text-slate-500 hover:text-slate-700"
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="space-y-4">
