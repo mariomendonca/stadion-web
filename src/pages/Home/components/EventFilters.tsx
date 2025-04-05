@@ -172,7 +172,7 @@ export function EventFilters({ filters, onFilterChange, availableStates, default
                 <CalendarIcon className="mr-2 h-4 w-4 shrink-0" />
                 <span className="truncate">
                   {filters.startDate ? (
-                    format(new Date(filters.startDate), 'PPP', { locale: ptBR })
+                    format(new Date(filters.startDate + 'T00:00:00'), 'PPP', { locale: ptBR })
                   ) : (
                     <span>Selecione uma data</span>
                   )}
@@ -182,7 +182,7 @@ export function EventFilters({ filters, onFilterChange, availableStates, default
             <PopoverContent className="w-auto p-0">
               <Calendar
                 mode="single"
-                selected={filters.startDate ? new Date(filters.startDate) : undefined}
+                selected={filters.startDate ? new Date(filters.startDate + 'T00:00:00') : undefined}
                 onSelect={(date) => handleDateChange(date, 'start')}
                 initialFocus
               />
@@ -201,7 +201,7 @@ export function EventFilters({ filters, onFilterChange, availableStates, default
                 <CalendarIcon className="mr-2 h-4 w-4 shrink-0" />
                 <span className="truncate">
                   {filters.endDate ? (
-                    format(new Date(filters.endDate), 'PPP', { locale: ptBR })
+                    format(new Date(filters.endDate + 'T00:00:00'), 'PPP', { locale: ptBR })
                   ) : (
                     <span>Selecione uma data</span>
                   )}
@@ -211,7 +211,7 @@ export function EventFilters({ filters, onFilterChange, availableStates, default
             <PopoverContent className="w-auto p-0">
               <Calendar
                 mode="single"
-                selected={filters.endDate ? new Date(filters.endDate) : undefined}
+                selected={filters.endDate ? new Date(filters.endDate + 'T00:00:00') : undefined}
                 onSelect={(date) => handleDateChange(date, 'end')}
                 initialFocus
               />
